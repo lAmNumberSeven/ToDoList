@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>TO-DO</title>
+{% endblock %}
+
+{% block body %}
+<form method="POST" action="">
+{% csrf_token %}
+<div class="input-group">
+    {{ form.task }}
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="submit" id="button-addon2">Add</button>
+    </div>
+</div>
+</form>
+    {% for task in tasks %}
+        <div class="task-body">
+            <div class="card my-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-12">
+                            {% if task.completed %}
+                                <h4 class="card-title task-complete">{{ task }}</h4>
+                                <p class="task-complete">{{ task.created_at }}</p>
+                            {% else %}
+                                <h4 class="card-title">{{ task }}</h4>
+                                <p>{{ task.created_at }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-xl-5 col-lg-12" align="right">
+                            {% if task.completed %}
+                            {% else %}
+                                <a href="{% url 'complete' task.id %}" class="btn btn-success">Complete</a>
+                            {% endif %}
+                        <a href="{% url 'update' task.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

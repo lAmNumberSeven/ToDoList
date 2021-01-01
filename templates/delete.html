@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Delete</title>
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">Delete Task</div>
+        <div class="card-body">
+            <h5 class="card-text">Are you sure that you want to delete <span class="deleteText">{{ task }}</span>?</h5>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <a href="{% url 'index' %}" class="btn btn-info">No, go back</a>
+                <button class="btn btn-danger" type="submit" name="delete">Yes, delete</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

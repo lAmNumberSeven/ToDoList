@@ -1,0 +1,20 @@
+.mainBody{
+    background-color: #fafafa;
+}
+
+.deleteText{
+    text-color: #fe6993;
+    background-color: rgba(254, 105, 147, 0.1);
+}
+.task-complete{
+    text-decoration: line-through;
+}
+.taskBody{
+    border: 1px;
+    border-radius: .25rem;
+    padding: 10px;
+}
+.checkBox{
+    width: 40px;
+    height: 40px
+}
